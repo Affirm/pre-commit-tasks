@@ -1,114 +1,123 @@
 {
-	"name": "pre-commit-tasks",
-	"displayName": "Pre-commit Tasks",
-	"description": "VS Code Extension to integrate pre-commit tasks before git commit",
-	"publisher": "Affirm",
-	"license": "MIT",
-	"version": "0.1.0",
-	"homepage": "https://github.com/Affirm/pre-commit-tasks",
-	"bugs": {
-		"url": "https://github.com/Affirm/pre-commit-tasks"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Affirm/pre-commit-tasks.git"
-	},
-	"keywords": [
-		"pre-commit"
-	],
-	"engines": {
-		"vscode": "^1.69.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onCommand:workbench.action.tasks.runTask",
-		"onStartupFinished"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"taskDefinitions": [
-			{
-				"type": "pre-commit (on git stage)",
-				"required": [
-					"task"
-				],
-				"properties": {
-					"task": {
-						"type": "string",
-						"description": "Pre-commit hook id to run"
-					}
-				}
-			},
-			{
-				"type": "pre-commit (on current file)",
-				"required": [
-					"task"
-				],
-				"properties": {
-					"task": {
-						"type": "string",
-						"description": "Pre-commit hook id to run"
-					},
-					"file": {
-						"type": "string",
-						"description": "The file to run the hook against"
-					}
-				}
-			}
-		],
-		"problemMatchers": [
-			{
-				"name": "pcmatcher",
-				"owner": "pre-commit",
-				"fileLocation": [
-					"relative",
-					"${workspaceFolder}"
-				],
-				"pattern": {
-					"regexp": "^(.*):(\\d+):(\\d+):\\s+(.*)$",
-					"file": 1,
-					"line": 2,
-					"column": 3,
-					"message": 4
-				}
-			}
-		],
-		"configuration": {
-			"title": "Pre-commit Tasks",
-			"type": "object",
-			"properties": {
-				"pre-commit-tasks.debug": {
-					"type": "boolean",
-					"description": "If true, debug information will be in an output tab",
-					"default": false
-				}
-			}
-		}
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.2.0",
-		"@types/mocha": "^9.1.1",
-		"@types/node": "^16.18.39",
-		"@types/vscode": "^1.69.0",
-		"@typescript-eslint/eslint-plugin": "^5.30.0",
-		"@typescript-eslint/parser": "^5.30.0",
-		"@vscode/test-electron": "^2.1.5",
-		"eslint": "^8.18.0",
-		"glob": "^8.0.3",
-		"mocha": "^10.0.0",
-		"typescript": "^4.7.4"
-	},
-	"dependencies": {
-		"yaml": "^2.1.1"
-	}
+  "name": "pre-commit-tasks",
+  "displayName": "Pre-commit Tasks",
+  "description": "VS Code Extension to integrate pre-commit tasks before git commit",
+  "publisher": "Affirm",
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Affirm/pre-commit-tasks",
+  "bugs": {
+    "url": "https://github.com/Affirm/pre-commit-tasks"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Affirm/pre-commit-tasks.git"
+  },
+  "keywords": [
+    "pre-commit"
+  ],
+  "engines": {
+    "vscode": "^1.69.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:workbench.action.tasks.runTask",
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "taskDefinitions": [
+      {
+        "type": "pre-commit (on git stage)",
+        "required": [
+          "task"
+        ],
+        "properties": {
+          "task": {
+            "type": "string",
+            "description": "Pre-commit hook id to run"
+          }
+        }
+      },
+      {
+        "type": "pre-commit (on current file)",
+        "required": [
+          "task"
+        ],
+        "properties": {
+          "task": {
+            "type": "string",
+            "description": "Pre-commit hook id to run"
+          },
+          "file": {
+            "type": "string",
+            "description": "The file to run the hook against"
+          }
+        }
+      }
+    ],
+    "problemMatchers": [
+      {
+        "name": "pcmatcher",
+        "owner": "pre-commit",
+        "fileLocation": [
+          "relative",
+          "${workspaceFolder}"
+        ],
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "message": 4
+        }
+      }
+    ],
+    "configuration": {
+      "title": "Pre-commit Tasks",
+      "type": "object",
+      "properties": {
+        "pre-commit-tasks.debug": {
+          "type": "boolean",
+          "description": "If true, debug information will be in an output tab",
+          "default": false
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "prepublishOnly": "vsce package -o pre-commit-tasks.vsix"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^16.18.39",
+    "@types/vscode": "^1.69.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "@vscode/test-electron": "^2.1.5",
+    "eslint": "^8.18.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "typescript": "^4.7.4",
+    "vsce": "^1.69.0"
+  },
+  "dependencies": {
+    "yaml": "^2.1.1"
+  },
+  "author": "Affirm",
+  "files": [
+    "pre-commit-tasks.vsix"
+  ],
+  "publishConfig": {
+    "registry": "TODO: ENTER LINK TO ARTIFACTORY"
+  }
 }
