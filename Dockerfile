@@ -11,10 +11,8 @@ RUN apt-get update
 RUN apt-get install -y \
   bzr \
   cvs \
-  git \
   mercurial \
   subversion \
-  npm \
   libgtkextra-dev \
   libgconf2-dev \
   libnss3 \
