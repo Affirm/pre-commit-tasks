@@ -64,7 +64,7 @@ If you want to run unit tests inside docker locally
 docker build . -t npm-tests:latest && docker run --rm npm-tests:latest
 ```
 
-* `docket build . -t npm-tests:lates` will create a docker images with *npm-tests:latest*. You should run `docker build` from the repo root (otherwise point to the `Dockerfile` by using `docker build -f <path-to-file> ...`).
+* `docket build . -t npm-tests:latest` will create a docker images with *npm-tests:latest*. You should run `docker build` from the repo root (otherwise point to the `Dockerfile` by using `docker build -f <path-to-file> ...`).
 * `docker run --rm npm-tests:latest` will run the tests in the container created from image from the previous step. `--rm` flag will remove container after tests are finished.
 
 ### Implement a new test suite
